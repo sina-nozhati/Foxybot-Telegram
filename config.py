@@ -104,27 +104,6 @@ def set_config_variables(configs, server_url):
     except KeyError:
         CLIENT_TOKEN = None
 
-    if CLIENT_TOKEN:
-        setup_users_db()
-    PANEL_URL = server_url
-    LANG = configs["bot_lang"]
-    # PANEL_ADMIN_ID = ADMIN_DB.find_admins(uuid=urlparse(PANEL_URL).path.split('/')[2])
-    PANEL_ADMIN_ID = urlparse(PANEL_URL).path.split('/')[2]
-    except requests.exceptions.ConnectionError:
-        print(colored("Bot Token is not valid! Error in connection", "red"))
-        return False
-    if request.status_code != 200:
-        print(colored("Bot Token is not valid!", "red"))
-        return False
-    elif request.status_code == 200:
-        print(colored("Bot Token is valid!", "green"))
-        print(colored("Bot Username:", "green"), "@"+request.json()['result']['username'])
-    return True
-
-
-def set_by_user():
-    print()
-    print(
         colored("Example: 123456789\nIf you have more than one admin, split with comma(,)\n[get it from @userinfobot]",
                 "yellow"))
     while True:
