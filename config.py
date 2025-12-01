@@ -84,28 +84,6 @@ def load_server_url(db):
         return panel_url[0]['url']
     except Exception as e:
         logging.error(f"Error while loading panel_url \n Error:{e}")
-        raise Exception(f"Error while loading panel_url \nBe in touch with {HIDY_BOT_ID}")
-
-
-ADMINS_ID, TELEGRAM_TOKEN, CLIENT_TOKEN, PANEL_URL, LANG, PANEL_ADMIN_ID = None, None, None, None, None, None
-
-
-def set_config_variables(configs, server_url):
-    if not conf['bot_admin_id'] and not conf['bot_token_admin'] and not conf['bot_lang'] or not server_url:
-        print(colored("Config is not set! , Please run config.py first", "red"))
-        raise Exception(f"Config is not set!\nBe in touch with {HIDY_BOT_ID}")
-
-    global ADMINS_ID, TELEGRAM_TOKEN, PANEL_URL, LANG, PANEL_ADMIN_ID, CLIENT_TOKEN
-    json_admin_ids = configs["bot_admin_id"]
-    ADMINS_ID = json.loads(json_admin_ids)
-            continue
-        admin_ids = [int(admin_id) for admin_id in admin_ids]
-        break
-    print()
-    print(colored("Example: 123456789:ABCdefGhIJKlmNoPQRsTUVwxyZ\n[get it from @BotFather]", "yellow"))
-    while True:
-        token = input("[+] Enter your Admin bot token: ")
-        if not token:
             print(colored("Token is required", "red"))
             continue
         if not bot_token_validator(token):
